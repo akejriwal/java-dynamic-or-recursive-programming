@@ -1,5 +1,7 @@
 package com.abhishek.dynamicprogramming;
 
+import java.math.BigInteger;
+
 /**
  * 
  * @author Abhishek
@@ -8,29 +10,31 @@ package com.abhishek.dynamicprogramming;
 public class FibonacciSeries 
 {
 
-	private long fibonacci(int n)
+	private BigInteger fibonacci(long n)
 	{
 		if(n <= 0)
 		{
-			return 0;
+			return BigInteger.ZERO;
 		}
 		
-		long output[] = new long[n];
 		if(n == 1 || n == 2)
 		{
-			return 1;
+			return BigInteger.ONE;
 		}
-		output[0] = 1;
-		output[1] = 1;
+		BigInteger out1 = BigInteger.ONE;
+		BigInteger out2 = BigInteger.ONE;
+		BigInteger out = BigInteger.ZERO;
 		for(int i = 2; i<n; i++)
 		{
-			output[i] = output[i-1] + output[i-2];
+			out = out1.add(out2);
+			out2 = out1;
+			out1 = out;
 		}
-		return output[n-1];
+		return out;
 	}
 	
 	public static void main(String[] args) {
-		long out = new FibonacciSeries().fibonacci(7);
+		BigInteger out = new FibonacciSeries().fibonacci(500);
 		System.out.println(out);
 	}
 
