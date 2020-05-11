@@ -29,12 +29,13 @@ public class FibonacciSeries
 			out = out1.add(out2);
 			out2 = out1;
 			out1 = out;
+			System.out.println(i);
 		}
 		return out;
 	}
 	
 	public static void main(String[] args) {
-		BigInteger out = new FibonacciSeries().fibonacci(500);
+		BigInteger out = new FibonacciSeries().fibonacci(10000);
 		System.out.println(out);
 	}
 
